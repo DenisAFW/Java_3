@@ -42,10 +42,11 @@ public class PhoneBook {
 
     public List<String> get(String name){
         List<String> gett = new ArrayList<>();
-        if(book.containsKey(name)){
-            String number = book.get(name);
-            gett.add(number);
-        }
+        for (Map.Entry<String, String> entry : book.entrySet())
+            if(book.get(name) == entry.getValue()){
+                String number = entry.getValue();
+                gett.add(number);
+            }
         return gett;
     }
 }

@@ -34,13 +34,18 @@ import java.util.*;
 
 public class PhoneBook {
 
+    Map<String, String> book = new HashMap<>();
+
     public void add(String number, String name){
-        Map<String, String> book = new HashMap<>();
         book.put(number, name);
     }
 
     public List<String> get(String name){
-        if()
-
+        List<String> gett = new ArrayList<>();
+        if(book.containsKey(name)){
+            String number = book.get(name);
+            gett.add(number);
+        }
+        return gett;
     }
 }

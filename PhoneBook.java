@@ -33,20 +33,23 @@ import java.util.*;
 
 
 public class PhoneBook {
-
-    Map<String, String> book = new HashMap<>();
-
-    public void add(String number, String name){
-        book.put(number, name);
+  
+    private Map<String, List<String>> map = new HashMap<>();
+  
+    public void add(String name, String number) {
+      List<String> numbers;
+      if (map.containsKey(name)) {
+        numbers = map.get(name);
+      } else {
+        numbers = new ArrayList<>();
+      }
+      numbers.add(number);
+      map.put(name, numbers);
     }
-
-    public List<String> get(String name){
-        List<String> gett = new ArrayList<>();
-        for (Map.Entry<String, String> entry : book.entrySet())
-            if(book.get(name) == entry.getValue()){
-                String number = entry.getValue();
-                gett.add(number);
-            }
-        return gett;
+  
+    public List<String> get(String name) {
+      return map.get(name);
     }
-}
+  
+  }
+  
